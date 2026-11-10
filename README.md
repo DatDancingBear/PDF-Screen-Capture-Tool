@@ -36,7 +36,7 @@ you agree you are solely responsible for your own actions.
 
 ## Requirements
 
-- **Windows 10/11** (uses Windows-specific APIs — not cross-platform)
+- **Windows 10/11** (uses Windows-specific APIs -- not cross-platform)
 - **Python 3.9+**
 - A PDF reader installed: Adobe Acrobat/Reader, Foxit Reader, Bluebeam Revu, or
   PDF-XChange
@@ -49,7 +49,7 @@ you agree you are solely responsible for your own actions.
 pip install pyautogui psutil pillow pypdf pytesseract
 ```
 
-`pytesseract` is only required if you intend to use the OCR feature — the program
+`pytesseract` is only required if you intend to use the OCR feature -- the program
 detects its absence and simply disables that option if missing.
 
 ---
