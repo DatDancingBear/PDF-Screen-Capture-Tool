@@ -12,6 +12,16 @@ pages into a single output file. It supports single files and multi-file batch q
 via drag-and-drop.
 
 ---
+## Screenshots
+
+
+|---|---|
+| ![Page count review, batch mode](screenshots/Screenshot_2.png) |![Batch settings dialog](screenshots/Screenshot_3.png) |
+
+
+|---|---|
+| ![Page count review, single file](screenshots/Screenshot_1.png) | ![Successful Operation](screenshots/Screenshot_4.png) |
+---
 
 ## ⚠️ Disclaimer
 
