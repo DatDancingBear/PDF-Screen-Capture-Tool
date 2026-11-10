@@ -1,7 +1,7 @@
 # PDF Screen Capture & Archival Tool
 
 A Windows desktop utility that archives paginated documents rendered on-screen by a PDF
-reader into a new, standalone PDF — with optional OCR, image cleanup, and batch
+reader into a new, standalone PDF -- with optional OCR, image cleanup, and batch
 processing across multiple files.
 
 It works by driving your PDF reader through fullscreen page-by-page navigation,
@@ -70,9 +70,9 @@ detects its absence and simply disables that option if missing.
    `.bat` file / shortcut.
 2. The first file opens automatically in your default PDF reader.
 3. A **Page Count Review** step appears first (see below), followed by the
-   **Settings dialog** — configure your options once, they apply to the whole run.
+   **Settings dialog** -- configure your options once, they apply to the whole run.
 4. Click **Start Extraction**. The program takes over your mouse/keyboard and the
-   reader window — **do not use the PC for anything else while it runs.**
+   reader window -- **do not use the PC for anything else while it runs.**
 5. When finished, a summary dialog appears and the output folder opens automatically.
 
 ### Emergency abort
@@ -86,28 +86,28 @@ current file or abort the whole batch (batch mode).
 
 ## How It Works (Pipeline Overview)
 
-1. **Launch & detect** — opens the dropped PDF with the OS default reader, then polls
+1. **Launch & detect** -- opens the dropped PDF with the OS default reader, then polls
    running processes to detect which supported reader engine is active.
-2. **Page count detection** — reads the real page count directly from the PDF
+2. **Page count detection** -- reads the real page count directly from the PDF
    structure via `pypdf`. If that fails (e.g. a genuine open-password, or malformed
    structure), the file is flagged with a stated reason and a high placeholder count is
    used instead, relying on automatic end-of-document detection (see below).
-3. **Settings dialog** — one-time configuration for timing, cropping, color mode,
+3. **Settings dialog** -- one-time configuration for timing, cropping, color mode,
    output format, and OCR.
-4. **(Optional) Benchmark** — automatically times a few real page turns to recommend a
+4. **(Optional) Benchmark** -- automatically times a few real page turns to recommend a
    safe "time between pages" value for your specific PC/reader/document combination.
-5. **Fullscreen navigation** — brings the reader to focus, enters fullscreen using the
+5. **Fullscreen navigation** -- brings the reader to focus, enters fullscreen using the
    correct keybinds for the detected reader engine, and pages through the target page
    range.
-6. **Capture & process per page** — screenshots the screen, auto-detects and crops the
+6. **Capture & process per page** -- screenshots the screen, auto-detects and crops the
    page's margins, applies sharpening/grayscale/pure black & white processing as
    configured.
-7. **End-of-document safety nets** — detects a genuine blank/black screen (real end of
+7. **End-of-document safety nets** -- detects a genuine blank/black screen (real end of
    document) or 5 identical consecutive pages (likely padding/reached-the-end) and
    automatically trims trailing duplicate pages before saving.
-8. **(Optional) OCR pass** — runs each captured page image through Tesseract to embed
+8. **(Optional) OCR pass** -- runs each captured page image through Tesseract to embed
    an invisible, searchable/selectable text layer behind the image.
-9. **Save & report** — writes the final PDF, exits fullscreen, and opens the output
+9. **Save & report** -- writes the final PDF, exits fullscreen, and opens the output
    folder. Batch runs additionally show a per-file success/failure summary.
 
 ---
@@ -135,24 +135,24 @@ current file or abort the whole batch (batch mode).
 | Setting | Description |
 |---|---|
 | **Margin Crop Value** | How much border to trim from each captured page, in Pixels, Millimeters, or Inches. Default is 0 (no crop). |
-| **Fallback Longest Edge** | Used only if the real page dimensions can't be read from the PDF (e.g. DRM blocking metadata access) — lets margin cropping still scale correctly. |
-| **Color Mode** | **Color (RGB)**, **Grayscale**, or **Pure Black & White (Lossless)** — the latter upscales and thresholds the image to a true 1-bit black/white output, ideal for text-only documents. |
+| **Fallback Longest Edge** | Used only if the real page dimensions can't be read from the PDF (e.g. DRM blocking metadata access) -- lets margin cropping still scale correctly. |
+| **Color Mode** | **Color (RGB)**, **Grayscale**, or **Pure Black & White (Lossless)** -- the latter upscales and thresholds the image to a true 1-bit black/white output, ideal for text-only documents. |
 | **JPEG Quality %** | Compression quality for Color/Grayscale output. Disabled in Pure B&W mode (which is lossless by nature). |
-| **B&W Output DPI** | Target resolution for Pure B&W mode. Default 600. Note: this upscales a screenshot — it does not re-render the PDF at higher resolution, so values much above ~900 mostly cost time/file size without adding real detail. Setting it to 96 skips upscaling entirely (fastest, but roughest edges). |
-| **Apply Text Sharpening** | Applies a sharpening filter to Color/Grayscale captures — recommended for text-heavy documents. |
+| **B&W Output DPI** | Target resolution for Pure B&W mode. Default 600. Note: this upscales a screenshot -- it does not re-render the PDF at higher resolution, so values much above ~900 mostly cost time/file size without adding real detail. Setting it to 96 skips upscaling entirely (fastest, but roughest edges). |
+| **Apply Text Sharpening** | Applies a sharpening filter to Color/Grayscale captures -- recommended for text-heavy documents. |
 
 ### Output File
 | Setting | Description |
 |---|---|
 | **Output Filename** *(single-file)* / **Output Filename Suffix** *(batch)* | Exact name for a single file, or a suffix appended to each original filename in batch mode. |
-| **Save in original folder** | Default on — saves next to the source PDF. Uncheck to choose one custom folder (batch: used for all files; single: used for that file). |
+| **Save in original folder** | Default on -- saves next to the source PDF. Uncheck to choose one custom folder (batch: used for all files; single: used for that file). |
 | **Close reader between files** *(batch only)* | Gracefully closes the reader after each file (recommended) so the next file opens cleanly without a "document not closed properly" recovery prompt. |
 
 ### Make Searchable (OCR)
 | Setting | Description |
 |---|---|
 | **Make Searchable (OCR)** | Runs each captured page through Tesseract OCR after capture, embedding an invisible selectable/searchable text layer behind the image. Automatically disabled if Tesseract/pytesseract isn't installed. |
-| **Mode: Accurate / Fast** | **Accurate** uses Tesseract's neural (LSTM) engine — slower, higher accuracy. **Fast** uses the legacy engine — quicker, lower accuracy. Neither produces a guaranteed 100% verbatim transcript; always spot-check OCR'd text for important documents. |
+| **Mode: Accurate / Fast** | **Accurate** uses Tesseract's neural (LSTM) engine -- slower, higher accuracy. **Fast** uses the legacy engine -- quicker, lower accuracy. Neither produces a guaranteed 100% verbatim transcript; always spot-check OCR'd text for important documents. |
 | **Language** | Tesseract language code(s), e.g. `eng`, or `eng+fra` for multi-language documents. |
 | **Tesseract Path** | Location of the installed `tesseract.exe` binary. |
 
@@ -175,7 +175,7 @@ Appears before the main settings dialog. For every queued file:
 - Shows the **auto-detected page count**, read directly from the PDF structure.
 - If detection fails, the file is shown in **red** with a plain-English reason
   (e.g. *"Password-protected,"* *"Corrupted or non-standard PDF structure,"* or the raw
-  error message) and defaults to a high placeholder (1500 pages) — the end-of-document
+  error message) and defaults to a high placeholder (1500 pages) -- the end-of-document
   safety nets described above then find the real end automatically.
 - Any value can be manually corrected before proceeding, which also disables the
   duplicate-page safety net for that file (since the true count is now known).
@@ -196,7 +196,7 @@ pip install pyautogui psutil pillow pypdf pytesseract pyinstaller
 ```
 
 Then from the folder containing `pdf_capture_tool_unified.py`, either use the provided
-`.spec` file (recommended — keeps build settings consistent and repeatable):
+`.spec` file (recommended -- keeps build settings consistent and repeatable):
 
 ```
 pyinstaller build_config.spec
@@ -215,7 +215,7 @@ terminal, no `pip install`, and no need to edit a `.bat` file's path.
 
 **Why `--onedir` instead of `--onefile`:** `--onefile` is slightly more convenient (a
 single file instead of a folder) but works by silently unpacking itself into a temp
-directory every time it runs — a behavior pattern that triggers antivirus heuristics
+directory every time it runs -- a behavior pattern that triggers antivirus heuristics
 considerably more often. `--onedir` produces a folder instead, with no runtime
 self-extraction step, and is noticeably less likely to be flagged. See below.
 
@@ -227,12 +227,12 @@ code.** Two independent, well-documented reasons this happens with tools like th
 
 1. **PyInstaller-built executables are flagged more often in general.** Bundling a full
    Python interpreter and dependencies into a self-contained executable is a packing
-   pattern that overlaps with how some real malware obfuscates its payload — this is a
+   pattern that overlaps with how some real malware obfuscates its payload -- this is a
    long-standing, widely reported false-positive pattern across the Python packaging
    community, unrelated to what any specific bundled script actually does.
 2. **This program's own functionality looks suspicious in isolation.** It simulates
    keyboard/mouse input, takes continuous screenshots, inspects the names of other
-   running processes, and (if OCR is enabled) launches an external executable — each a
+   running processes, and (if OCR is enabled) launches an external executable -- each a
    legitimate part of how it works, but also a textbook pattern for keylogger/RAT
    heuristic detection when a security scanner has no way to know *why* a program is
    doing those things.
