@@ -14,13 +14,11 @@ via drag-and-drop.
 ---
 ## Screenshots
 
-
+| | |
 |---|---|
-| ![Page count review, batch mode](screenshots/Screenshot_2.png) |![Batch settings dialog](screenshots/Screenshot_3.png) |
+| ![Screenshot 2](screenshots/Screenshot_2.png) | ![Screenshot 3](screenshots/Screenshot_3.png) |
+| ![Screenshot 1](screenshots/Screenshot_1.png) | ![Screenshot 4](screenshots/Screenshot_4.png) |
 
-
-|---|---|
-| ![Page count review, single file](screenshots/Screenshot_1.png) | ![Successful Operation](screenshots/Screenshot_4.png) |
 ---
 
 ## ⚠️ Disclaimer
