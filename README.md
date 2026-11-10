@@ -1,6 +1,6 @@
 # PDF Screen Capture & Archival Tool
 
-![Release](https://img.shields.io/github/v/release/DatDancingBear/PDF-Screen-Capture-Tool?include_prereleases)
+[![Release](https://img.shields.io/github/v/release/DatDancingBear/PDF-Screen-Capture-Tool?include_prereleases&label=release)](https://github.com/DatDancingBear/PDF-Screen-Capture-Tool/releases)
 
 A Windows desktop utility that archives paginated documents rendered on-screen by a PDF
 reader into a new, standalone PDF -- with optional OCR, image cleanup, and batch
